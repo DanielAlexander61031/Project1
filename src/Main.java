@@ -102,3 +102,40 @@ public class Main extends Application {
             root.getChildren().add(comboBox);
         }
 
+        public static void openNewStage(Pane parent) {
+            StageThree newStage = new StageThree(parent);
+        }
+
+        public void closeStage(Stage stage) {
+
+            parent.setDisable(false);
+            stage.close();
+
+        }
+    }
+    // This is the code that produced the third scene
+    public static class StageThree {
+
+        static Pane parent;
+
+        public StageThree(Pane theParent) {
+
+            Stage stage = new Stage();
+            parent = theParent;
+            parent.setDisable(true);
+            start(stage);
+
+        }
+
+        public void start(Stage stage) {
+
+            Pane root = new Pane();
+            Scene scene = new Scene(root, 1024, 768);
+            stage.setTitle("Have Fun!");
+            stage.setScene(scene);
+            stage.show();
+
+        }
+
+    }
+
