@@ -139,3 +139,74 @@ public class Main extends Application {
 
     }
 
+    //This is the section of coding that would allow the quiz users to read and write to a file, more specifically the high scores file, the rest of the files are read only.
+    public static void main(String[] args) {
+        launch(args);
+        String Filename1 = "./src/HighScore.txt";
+        String Filename2 = "./src/Quiz1.txt";
+        String Filename3 = "./src/Quiz2.txt";
+        String Filename4 = "./src/Quiz3.txt";
+        String Filename5 = "./src/Quiz4.txt";
+        String Filename6 = "./src/Quiz5.txt";
+
+        String line = null;
+//The coding below was all try and catch methods that would read every file and write to the high score file.
+        try {
+            FileReader fileReader = new FileReader(Filename1);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter(Filename1);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.newLine();
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader.close();
+            bufferedWriter.close();
+
+            FileReader fileReader1 = new FileReader(Filename2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            while ((line = bufferedReader1.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader1.close();
+
+            FileReader fileReader2 = new FileReader(Filename3);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            while ((line = bufferedReader2.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader2.close();
+
+            FileReader fileReader3 = new FileReader(Filename4);
+            BufferedReader bufferedReader3 = new BufferedReader(fileReader3);
+            while ((line = bufferedReader3.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader3.close();
+
+            FileReader fileReader4 = new FileReader(Filename5);
+            BufferedReader bufferedReader4 = new BufferedReader(fileReader4);
+            while ((line = bufferedReader4.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader4.close();
+
+            FileReader fileReader5 = new FileReader(Filename6);
+            BufferedReader bufferedReader5 = new BufferedReader(fileReader5);
+            while ((line = bufferedReader5.readLine()) != null) {
+                System.out.println(line);
+            }
+// The exception errors below would be produced if the files were not found or if an IOException was found
+            bufferedReader5.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file");
+        } catch (IOException ex) {
+            System.out.println("Error reading file");
+        }
+    }
+}
