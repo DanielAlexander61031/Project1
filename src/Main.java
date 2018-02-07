@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -129,12 +130,26 @@ public class Main extends Application {
 
         public void start(Stage stage) {
 
-            Pane root = new Pane();
-            Scene scene = new Scene(root, 1024, 768);
+            GridPane root = new GridPane();
+            Scene scene = new Scene(root, 300, 200);
             stage.setTitle("Have Fun!");
             stage.setScene(scene);
             stage.show();
 
+            String[] answers = {"Question Number:", "Questions answered:"};
+            Label[] labels = new Label[2];
+            for(int index = 0; index < labels.length; index++) {
+                labels[index] = new Label();
+            }
+
+            TextField UserAnswer = new TextField();
+            UserAnswer.setPromptText("Enter your answer.");
+            UserAnswer.setPrefColumnCount(10);
+            UserAnswer.getText();
+            root.getChildren().add(UserAnswer);
+            Button my3button = new Button("Submit");
+            GridPane.setConstraints(root, 1, 0);
+            root.getChildren().add(my3button);
         }
 
     }
@@ -164,10 +179,14 @@ public class Main extends Application {
             bufferedReader.close();
             bufferedWriter.close();
 
+            String text = null;
+            int linecount = 0;
             FileReader fileReader1 = new FileReader(Filename2);
             BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
-            while ((line = bufferedReader1.readLine()) != null) {
-                System.out.println(line);
+            while ((text = bufferedReader1.readLine()) != null && linecount < 3) {
+                System.out.println(text);
+                labels[linecount].setText(answers[linecount] + " " + text);
+                linecount++;
             }
 
             bufferedReader1.close();
